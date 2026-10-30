@@ -23,6 +23,7 @@
 - [ ] REST API
 - [ ] Aplikasi kasir
 - [ ] Deploy
+- [ ] Setup Linux Mint Selesai
 
 ## Tujuan belajar
 
