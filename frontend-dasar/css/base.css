@@ -1,0 +1,113 @@
+/* base.css: variabel, reset, dan gaya dasar. Tidak ada tata letak di sini. */
+
+:root {
+  /* Warna */
+  --navy: #0b3c5d;
+  --navy-gelap: #082c44;
+  --biru-muda: #e8f3f8;
+  --oranye: #f28c28;
+  --oranye-gelap: #d9740f;
+  --teks: #1f2933;
+  --teks-redup: #52606d;
+  --garis: #d5e3ec;
+  --putih: #ffffff;
+
+  /* Skala jarak: kelipatan 8px */
+  --s1: 8px;
+  --s2: 16px;
+  --s3: 24px;
+  --s4: 32px;
+  --s6: 48px;
+  --s8: 64px;
+
+  /* Satu radius untuk kartu dan kolom, satu untuk pil */
+  --radius: 10px;
+  --radius-pil: 999px;
+
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px; /* supaya judul tidak tertutup header saat lompat ke #katalog */
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  color: var(--teks);
+  background: var(--putih);
+  line-height: 1.6;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Fokus keyboard selalu terlihat */
+:focus-visible {
+  outline: 3px solid var(--oranye);
+  outline-offset: 2px;
+}
+
+/* Teks untuk pembaca layar saja */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Hormati pengguna yang mematikan animasi */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}

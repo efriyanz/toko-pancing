@@ -1,0 +1,449 @@
+/* components.css: tombol, kartu produk, filter, keranjang, tombol WhatsApp, toast */
+
+/* Tombol */
+.tombol {
+  display: inline-block;
+  padding: 12px 20px;
+  border: 2px solid transparent;
+  border-radius: var(--radius);
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1.2;
+}
+
+/* Oranye hanya dipakai untuk aksi utama. Teks navy supaya kontrasnya cukup. */
+.tombol-utama {
+  background: var(--oranye);
+  color: var(--navy-gelap);
+}
+
+.tombol-utama:hover {
+  background: var(--oranye-gelap);
+}
+
+.tombol-garis-terang {
+  border-color: #6f9bb5;
+  color: var(--putih);
+}
+
+.tombol-garis-terang:hover {
+  border-color: var(--putih);
+}
+
+.tombol-garis {
+  border-color: var(--garis);
+  background: var(--putih);
+  color: var(--navy);
+}
+
+.tombol-garis:hover {
+  border-color: var(--navy);
+}
+
+/* Tombol keranjang di header */
+.tombol-keranjang {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s1);
+  padding: 8px 14px;
+  border: 2px solid #3f6f8c;
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--putih);
+  font-weight: 600;
+}
+
+.tombol-keranjang:hover {
+  border-color: var(--putih);
+}
+
+.lencana {
+  min-width: 24px;
+  padding: 0 6px;
+  border-radius: var(--radius-pil);
+  background: var(--oranye);
+  color: var(--navy-gelap);
+  font-size: 0.8125rem;
+  font-weight: 800;
+  line-height: 24px;
+  text-align: center;
+}
+
+/* Filter kategori (pil) */
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1);
+}
+
+.chip {
+  padding: 8px 16px;
+  border: 1px solid var(--garis);
+  border-radius: var(--radius-pil);
+  background: var(--putih);
+  color: var(--navy);
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.chip:hover {
+  border-color: var(--navy);
+}
+
+.chip[aria-pressed="true"] {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--putih);
+}
+
+/* Kolom cari */
+.cari input {
+  width: min(320px, 100%);
+  padding: 10px 14px;
+  border: 1px solid var(--garis);
+  border-radius: var(--radius);
+  background: var(--putih);
+  color: var(--teks);
+}
+
+.cari input:focus {
+  border-color: var(--navy);
+}
+
+/* Kartu produk */
+.kartu-produk {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--garis);
+  border-radius: var(--radius);
+  background: var(--putih);
+  overflow: hidden;
+}
+
+.kartu-produk:hover {
+  border-color: var(--navy);
+}
+
+.kartu-gambar {
+  aspect-ratio: 4 / 3;
+  background: var(--biru-muda);
+}
+
+.kartu-gambar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.kartu-isi {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 4px;
+  padding: var(--s2);
+}
+
+.kartu-kategori {
+  color: var(--teks-redup);
+  font-size: 0.875rem;
+  text-transform: capitalize;
+}
+
+.kartu-nama {
+  font-size: 1.0625rem;
+  letter-spacing: -0.01em;
+}
+
+.kartu-harga {
+  margin-top: 4px;
+  color: var(--navy);
+  font-size: 1.1875rem;
+  font-weight: 800;
+}
+
+.kartu-stok {
+  color: var(--teks-redup);
+  font-size: 0.875rem;
+}
+
+.kartu-stok.tipis {
+  color: #9a4d00;
+  font-weight: 600;
+}
+
+.kartu-isi .tombol {
+  margin-top: var(--s2);
+  width: 100%;
+}
+
+.kartu-isi .tombol:disabled {
+  background: var(--biru-muda);
+  color: var(--teks-redup);
+  cursor: not-allowed;
+}
+
+.kosong {
+  grid-column: 1 / -1;
+  padding: var(--s6) var(--s2);
+  border: 1px dashed var(--garis);
+  border-radius: var(--radius);
+  color: var(--teks-redup);
+  text-align: center;
+}
+
+/* Panel keranjang */
+.tirai {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background: rgba(8, 44, 68, 0.55);
+}
+
+.panel-keranjang {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  width: min(420px, 100%);
+  background: var(--putih);
+  box-shadow: -8px 0 24px rgba(8, 44, 68, 0.2);
+  transform: translateX(100%);
+  transition: transform 0.25s ease;
+}
+
+.panel-keranjang.terbuka {
+  transform: translateX(0);
+}
+
+.panel-kepala {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--s2) var(--s3);
+  border-bottom: 1px solid var(--garis);
+}
+
+.panel-kepala h2 {
+  font-size: 1.25rem;
+}
+
+.tombol-tutup {
+  padding: 6px 12px;
+  border: 1px solid var(--garis);
+  border-radius: var(--radius);
+  background: var(--putih);
+  color: var(--navy);
+  font-weight: 600;
+}
+
+.panel-isi {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.panel-daftar {
+  flex: 1;
+  margin: 0;
+  padding: 0 var(--s3);
+  overflow-y: auto;
+  list-style: none;
+}
+
+.baris-keranjang {
+  display: grid;
+  gap: var(--s1);
+  padding-block: var(--s2);
+  border-bottom: 1px solid var(--garis);
+}
+
+.baris-nama {
+  color: var(--navy);
+  font-weight: 700;
+}
+
+.baris-harga {
+  color: var(--teks-redup);
+  font-size: 0.9375rem;
+}
+
+.baris-aksi {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s2);
+}
+
+.jumlah {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--garis);
+  border-radius: var(--radius);
+}
+
+.jumlah button {
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: transparent;
+  color: var(--navy);
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.jumlah output {
+  min-width: 32px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.baris-subtotal {
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.tombol-teks {
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  color: var(--teks-redup);
+  text-decoration: underline;
+}
+
+.tombol-teks:hover {
+  color: var(--navy);
+}
+
+.panel-kaki {
+  display: grid;
+  gap: var(--s2);
+  padding: var(--s2) var(--s3) var(--s3);
+  border-top: 1px solid var(--garis);
+}
+
+.total {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  font-weight: 700;
+}
+
+.total strong {
+  color: var(--navy);
+  font-size: 1.375rem;
+}
+
+.catatan {
+  color: var(--teks-redup);
+  font-size: 0.875rem;
+}
+
+.panel-kosong {
+  display: grid;
+  flex: 1;
+  align-content: center;
+  justify-items: center;
+  gap: var(--s2);
+  padding: var(--s4);
+  color: var(--teks-redup);
+  text-align: center;
+}
+
+/* Tombol WhatsApp melayang */
+.wa-melayang {
+  position: fixed;
+  right: var(--s2);
+  bottom: var(--s2);
+  z-index: 25;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s1);
+  padding: 12px 18px;
+  border-radius: var(--radius-pil);
+  background: var(--oranye);
+  color: var(--navy-gelap);
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 14px rgba(8, 44, 68, 0.3);
+}
+
+.wa-melayang:hover {
+  background: var(--oranye-gelap);
+}
+
+/* Toast: umpan balik singkat setelah aksi */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: var(--s3);
+  z-index: 50;
+  max-width: calc(100% - 32px);
+  padding: 10px 18px;
+  border-radius: var(--radius);
+  background: var(--navy-gelap);
+  color: var(--putih);
+  font-size: 0.9375rem;
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 8px);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.toast.tampil {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (max-width: 480px) {
+  /* Di HP, tombol WhatsApp cukup ikonnya saja */
+  .wa-teks {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .wa-melayang {
+    padding: 14px;
+  }
+}
+
+/* Paging katalog: hanya Sebelumnya, info halaman, dan Berikutnya */
+.paging {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s2);
+  margin-top: var(--s4);
+}
+
+.paging[hidden] {
+  display: none;
+}
+
+.paging .tombol {
+  padding: 10px 18px;
+}
+
+/* aria-disabled (bukan disabled) supaya fokus keyboard tidak hilang di tombol yang sama */
+.paging .tombol[aria-disabled="true"] {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.paging .tombol[aria-disabled="true"]:hover {
+  border-color: var(--garis);
+}
+
+#info-halaman {
+  min-width: 7.5rem;
+  color: var(--teks-redup);
+  font-size: 0.9375rem;
+  text-align: center;
+}

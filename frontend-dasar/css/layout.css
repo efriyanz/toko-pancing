@@ -1,0 +1,206 @@
+/* layout.css: kerangka halaman (header, hero, bagian, grid, footer) */
+
+.container {
+  width: min(1120px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+/* Header */
+.header-situs {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--navy-gelap);
+  color: var(--putih);
+}
+
+.header-isi {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s2);
+  min-height: 64px;
+}
+
+.merek {
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+.nav-utama {
+  display: flex;
+  align-items: center;
+  gap: var(--s3);
+}
+
+.nav-utama a {
+  color: #cfe3ef;
+  text-decoration: none;
+}
+
+.nav-utama a:hover {
+  color: var(--putih);
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  background: var(--navy);
+  color: var(--putih);
+  padding-top: var(--s6);
+  padding-bottom: 72px; /* ruang untuk gelombang */
+  overflow: hidden;
+}
+
+.hero-isi {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  align-items: center;
+  gap: var(--s4);
+}
+
+.hero-teks {
+  display: grid;
+  gap: var(--s2);
+  justify-items: start;
+}
+
+.hero h1 {
+  color: var(--putih);
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 800;
+  max-width: 22ch;
+}
+
+.hero-teks > p {
+  max-width: 46ch;
+  color: #cfe3ef;
+  font-size: 1.125rem;
+}
+
+.hero-aksi {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+}
+
+.hero-gambar {
+  width: 100%;
+  max-width: 360px;
+  justify-self: center;
+}
+
+.hero-gelombang {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 40px;
+  fill: var(--putih);
+}
+
+/* Bagian halaman */
+.bagian {
+  padding-block: var(--s8);
+}
+
+.bagian-muda {
+  background: var(--biru-muda);
+}
+
+.bagian h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  margin-bottom: var(--s3);
+}
+
+/* Katalog */
+.katalog-alat {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s2);
+}
+
+.hasil {
+  margin-block: var(--s2) var(--s3);
+  color: var(--teks-redup);
+  font-size: 0.9375rem;
+}
+
+.grid-produk {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--s3);
+}
+
+/* Tentang */
+/* Catatan: jangan beri margin-inline pada .tentang, karena elemen ini juga .container
+   dan margin-nya yang menengahkan halaman. Batas lebar dipasang di isinya saja. */
+.tentang > p,
+.tentang > .poin {
+  max-width: 68ch;
+}
+
+.tentang > p {
+  color: var(--teks-redup);
+}
+
+.poin {
+  margin: var(--s3) 0 0;
+  padding-left: var(--s3);
+  display: grid;
+  gap: var(--s1);
+}
+
+/* Footer */
+.footer-situs {
+  background: var(--navy-gelap);
+  color: #cfe3ef;
+  padding-block: var(--s6);
+}
+
+.footer-isi {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--s4);
+}
+
+.footer-judul {
+  color: var(--putih);
+  font-weight: 700;
+  margin-bottom: var(--s1);
+}
+
+.footer-kecil {
+  margin-top: var(--s2);
+  font-size: 0.875rem;
+  color: #9cb7c8;
+}
+
+/* Layar kecil */
+@media (max-width: 720px) {
+  .hero {
+    padding-top: var(--s4);
+    padding-bottom: 64px;
+  }
+
+  .hero-isi {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-gambar {
+    max-width: 240px;
+    justify-self: center;
+  }
+
+  .nav-utama a {
+    display: none; /* di HP, menu teks disembunyikan; tombol keranjang tetap */
+  }
+
+  .bagian {
+    padding-block: var(--s6);
+  }
+}
